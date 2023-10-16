@@ -27,7 +27,7 @@ jobs:
         working-directory: environments/prod
 
       - name: Terraform Validate
-        run: terraform validate -var="sql_administrator_login_password=${{ secrets.SQL_ADMIN_LOGIN_PASS }}"
+        run: terraform validate
         working-directory: environments/prod
 
       - name: Terraform Plan
