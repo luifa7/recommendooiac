@@ -1,9 +1,7 @@
 # Azure Infrastructure Deployment using Terraform
+## This repository contains Terraform configurations for deploying a scalable and secure infrastructure on Azure.
 
-This repository contains Terraform configurations for deploying a scalable and secure infrastructure on Azure.
-
-## Directory Structure
-
+### Directory Structure
 - `modules/`: Contains reusable Terraform modules for each component of the infrastructure.
 - `environments/`: Environment-specific configurations (e.g., `prod`, `stage`).
 - `global/`: Global configurations such as provider.
@@ -16,17 +14,17 @@ This repository contains Terraform configurations for deploying a scalable and s
 ## Usage
 
 1. Clone the repository:
-   ```bash
+   ```
    git clone https://github.com/luifa7/recommendooiac.git
    ```
 
 2. Initialize terraform:
-    ```bash
+    ```
     cd recommendooiac/environments/prod
     terraform init
     ```
 
 3. Apply the configuration:
-    ```bash
+    ```
     terraform apply
     ```
