@@ -27,14 +27,14 @@ jobs:
         working-directory: environments/prod
 
       - name: Terraform Validate
-        run: terraform validate
+        run: terraform validate -var="sql_administrator_login_password=${{ secrets.SQL_ADMIN_LOGIN_PASS }}"
         working-directory: environments/prod
 
       - name: Terraform Plan
-        run: terraform plan -no-color
+        run: terraform plan -no-color -var="sql_administrator_login_password=${{ secrets.SQL_ADMIN_LOGIN_PASS }}"
         continue-on-error: true
         working-directory: environments/prod
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -no-color
+        run: terraform apply -auto-approve -no-color -var="sql_administrator_login_password=${{ secrets.SQL_ADMIN_LOGIN_PASS }}"
         working-directory: environments/prod
