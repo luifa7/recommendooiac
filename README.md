@@ -4,7 +4,6 @@
 ### Directory Structure
 - `modules/`: Contains reusable Terraform modules for each component of the infrastructure.
 - `environments/`: Environment-specific configurations (e.g., `prod`, `stage`).
-- `global/`: Global configurations such as provider.
   
 ## Prerequisites
 
