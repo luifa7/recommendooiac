@@ -22,24 +22,14 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Extract credentials from secret
-        id: creds
-        run: |
-          creds=$(echo '${{ secrets.AZURE_CREDENTIALS }}' | jq -c .)
-          echo "::set-output name=client_id::$(echo $creds | jq -r '.client_id')"
-          echo "::set-output name=client_secret::$(echo $creds | jq -r '.client_secret')"
-          echo "::set-output name=tenant_id::$(echo $creds | jq -r '.tenant_id')"
-          echo "::set-output name=subscription_id::$(echo $creds | jq -r '.subscription_id')"
-        shell: bash
-
       - name: Terraform Initialize
         run: terraform init
         working-directory: environments/prod
         env:
-          ARM_CLIENT_ID: ${{ steps.creds.outputs.client_id }}
-          ARM_CLIENT_SECRET: ${{ steps.creds.outputs.client_secret }}
-          ARM_TENANT_ID: ${{ steps.creds.outputs.tenant_id }}
-          ARM_SUBSCRIPTION_ID: ${{ steps.creds.outputs.subscription_id }}
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
 
       - name: Terraform Validate
         run: terraform validate
