@@ -9,6 +9,9 @@ resource "azurerm_mssql_server" "sql_server" {
   location                     = var.location
   resource_group_name          = var.resource_group_name
   version                      = "12.0"
+  minimum_tls_version          = "1.2"
+  public_network_access_enabled = true
+  outbound_network_restriction_enabled = false
   administrator_login          = local.administrator_login
   administrator_login_password = var.administrator_login_password
 }
@@ -28,5 +31,7 @@ resource "azurerm_mssql_database" "sql_db" {
   sku_name            = "Basic"
   max_size_gb         = 2
   zone_redundant      = false
+  read_scale          = "Disabled"
+  ledger_enabled      = false
 }
 
