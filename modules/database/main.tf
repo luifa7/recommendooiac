@@ -31,7 +31,7 @@ resource "azurerm_mssql_database" "sql_db" {
   sku_name            = "Basic"
   max_size_gb         = 2
   zone_redundant      = false
-  read_scale          = "Disabled"
+  read_scale          = false
   ledger_enabled      = false
 }
 
